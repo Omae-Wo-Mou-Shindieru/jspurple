@@ -1,12 +1,12 @@
-const addressLat = 10;
-const addressLong = 8;
+const latProjection = 10;
+const longProjection = 8;
 
-const positionLat = 2;
-const positionLong = 2;
+const positionLatProjection = 2;
+const positionLongProjection = 2;
 
-const legA = addressLat - positionLat;
-const legB = addressLong - positionLong;
+const legA = latProjection - positionLatProjection;
+const legB = longProjection - positionLongProjection;
 
-const hypotenuse = Math.sqrt(a ** 2 + b ** 2);
+const distance = Math.sqrt(legA ** 2 + legB ** 2);
 
 console.log(distance);
