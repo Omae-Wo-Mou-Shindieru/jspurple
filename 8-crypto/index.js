@@ -1,5 +1,5 @@
 function crypto(string) {
-  const arrFromStr = string.split("");
+  const arrFromStr = [...string];
   if (arrFromStr.length < 4) {
     return "Слишком короткий пароль";
   }
