@@ -1,19 +1,19 @@
-function crypto(string) {
-  const arrFromStr = [...string];
+function crypto(pass) {
+  const arrFromStr = [...pass];
   if (arrFromStr.length < 4) {
     return "Слишком короткий пароль";
   }
   const firstHalfReversed = arrFromStr
     .splice(0, arrFromStr.length / 2)
     .reverse();
-  const temp = arrFromStr[0];
-  arrFromStr[0] = arrFromStr[arrFromStr.length - 1];
-  arrFromStr[arrFromStr.length - 1] = temp;
+
+  [arrFromStr[0], arrFromStr[arrFromStr.length - 1]] = [arrFromStr[arrFromStr.length - 1], arrFromStr[0]];
+
   return firstHalfReversed.concat(arrFromStr).join("");
 }
 
-function check(password, string) {
-  return password === crypto(string);
+function check(cryptoPass, pass) {
+  return cryptoPass === crypto(pass);
 }
 
 console.log(crypto("password"));
