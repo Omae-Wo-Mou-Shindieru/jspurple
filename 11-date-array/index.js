@@ -8,44 +8,28 @@ const array = [
   "11-2023",
 ];
 
-function isValidDate(dateString) {
-  let separator;
-  if (dateString[2] === "-") {
-    separator = "-";
-  } else if (dateString[2] === "/") {
-    separator = "/";
-  } else if (dateString[2] === ".") {
-    separator = ".";
-  } else {
-    return false;
+function transformDateStringToArray(dateString) {
+  let [day, month, year] = dateString.split("/");
+  if (!year) {
+    [day, month, year] = dateString.split("-");
   }
-
-  const date = dateString.split(separator);
-
-  if (date.length !== 3) {
-    return false;
+  if (!year || isNaN(day) || isNaN(month) || isNaN(year)) {
+    return null;
   }
-  const day = Number(date[0]);
-  const month = Number(date[1]);
-  const year = Number(date[2]);
-
-  if (isNaN(day) || isNaN(month) || isNaN(year)) {
-    return false;
-  }
-
   if (month < 1 || month > 12) {
-    return false;
+    return null;
   }
   if (day < 1 || day > 31) {
-    return false;
+    return null;
   }
-
-  return true;
+  return [day, month, year];
 }
 
-const validDates = array
-  .filter((dateString) => isValidDate(dateString))
-  .map((dateString) => {
-    return dateString.split(dateString[2]).join("-");
-  });
+const validDates = array.reduce((datesArray, dateString) => {
+  if (transformDateStringToArray(dateString)) {
+    datesArray.push(transformDateStringToArray(dateString).join("-"));
+  }
+  return datesArray;
+}, []);
+
 console.log(validDates);
