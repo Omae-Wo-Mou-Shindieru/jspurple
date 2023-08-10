@@ -42,35 +42,50 @@ const toDoList = {
   },
 };
 
-const newTask1 = {
-  priority: 4,
-  title: "Поиграть в Baldur's Gate 3",
+const task1 = {
+  order: 4,
+  name: "Поиграть в Baldur's Gate 3",
   timeLimit: 3600,
 };
 
-const newTask2 = {
-  priority: 1,
-  title: "Перепройти Gothic",
-  comment: "Не забыть про мод Архолос",
+const task2 = {
+  order: 1,
+  name: "Перепройти Gothic",
+  description: "Не забыть про мод Архолос",
 };
 
-toDoList.removeTask(2);
-console.log(toDoList);
-toDoList.addTask({ priority: 3, title: "Пойти в магазин" });
-console.log(toDoList);
-toDoList.addTask({ title: "Починить крышу" });
-console.log(toDoList);
-toDoList.addTask({ priority: 2, title: "Пообедать с другом" });
-console.log(toDoList);
-toDoList.addTask(newTask1);
-console.log(toDoList);
-toDoList.addTask(newTask2);
-console.log(toDoList);
-toDoList.updateTask(1, { priority: 5, title: "Купить посуду" });
-console.log(toDoList);
-toDoList.updateTask(2, { priority: 4, shoppingList: ["Молоко", "Картофель"] });
-console.log(toDoList);
-console.log("После сортировки : ");
-toDoList.sortTasks();
-console.log(toDoList.tasks);
+const newTask = {
+  tasks: [
+    {
+      id: 1,
+      name: "test",
+      description: "описание",
+      order: 0,
+    },
+  ],
+};
 
+const addTaskFunc = toDoList.addTask;
+const updateTaskFunc = toDoList.updateTask;
+const removeTaskFunc = toDoList.removeTask.bind(newTask);
+const addTestTaskFunc = toDoList.addTask.bind(newTask, { name: "test" });
+
+console.log("ADD TASK CALL TEST");
+addTaskFunc.call(newTask, task1);
+console.log(newTask);
+addTaskFunc.call(newTask, task2);
+console.log(newTask);
+console.log("=================");
+console.log("UPDATE TASK APPLY TEST");
+updateTaskFunc.apply(newTask, [3, { timeLimit: 3600 }]);
+updateTaskFunc.apply(newTask, [2, { priority: 2 }]);
+console.log(newTask);
+console.log("=================");
+console.log("REMOVE TASK BIND TEST");
+removeTaskFunc(1);
+console.log(newTask);
+console.log("=================");
+console.log("UPDATE TASK BIND TEST");
+addTestTaskFunc({ description: "описание" });
+console.log(newTask);
+console.log("=================");
