@@ -25,11 +25,13 @@ function transformDateStringToArray(dateString) {
   return [day, month, year];
 }
 
-const validDates = array.reduce((datesArray, dateString) => {
-  if (transformDateStringToArray(dateString)) {
-    datesArray.push(transformDateStringToArray(dateString).join("-"));
-  }
-  return datesArray;
-}, []);
+function parseDates(datesArray) {
+  return datesArray.reduce((datesArray, dateString) => {
+    if (transformDateStringToArray(dateString)) {
+      datesArray.push(transformDateStringToArray(dateString).join("-"));
+    }
+    return datesArray;
+  }, []);
+}
 
-console.log(validDates);
+console.log(parseDates(array));
