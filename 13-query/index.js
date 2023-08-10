@@ -3,12 +3,12 @@ const object = {
   take: 10,
 };
 
-function formQueryParams(obj) {
+function buildQueryString(obj) {
   const params = [];
   for (const key of Object.keys(obj)) {
-    params.push(key + "=" + obj[key]);
+    params.push(`${key}=${obj[key]}`);
   }
   return params.join("&");
 }
 
-console.log(formQueryParams(object));
+console.log(buildQueryString(object));
