@@ -26,8 +26,7 @@ const toDoList = {
     this.tasks = this.tasks.filter((task) => task.id !== id);
   },
   updateTask: function (id, task) {
-    // let foundTask = this.tasks.find((task) => task.id === id);
-    let foundTaskIndex = this.tasks.findIndex((task) => task.id === id);
+    const foundTaskIndex = this.tasks.findIndex((task) => task.id === id);
     if (foundTaskIndex === -1) {
       console.log("Задача не найдена");
       return;
