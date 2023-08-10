@@ -3,7 +3,8 @@ const cardNumber2 = "4561-2612-1234-5467";
 const cardNumber3 = "7992-7398-713";
 const cardNumber4 = "7992-7398-714";
 
-function validateLuhn(cardNumber) {
+function validateLuhn(cardNumberStr) {
+  const cardNumber = cardNumberStr.replaceAll("-", "");
   let sum = 0;
   const nDigits = cardNumber.length;
   let parity = nDigits % 2;
@@ -17,34 +18,33 @@ function validateLuhn(cardNumber) {
     }
     sum += digit;
   }
-    console.log(sum);
   return sum % 10 === 0;
 }
 
 console.log(
   `Номер карты ${cardNumber} ${
-    validateLuhn(cardNumber.replaceAll("-", ""))
+    validateLuhn(cardNumber)
       ? "введен верно"
       : "введен неверно"
   }`
 );
 console.log(
   `Номер карты ${cardNumber2} ${
-    validateLuhn(cardNumber2.replaceAll("-", ""))
+    validateLuhn(cardNumber2)
       ? "введен верно"
       : "введен неверно"
   }`
 );
 console.log(
   `Номер карты ${cardNumber3} ${
-    validateLuhn(cardNumber3.replaceAll("-", ""))
+    validateLuhn(cardNumber3)
       ? "введен верно"
       : "введен неверно"
   }`
 );
 console.log(
   `Номер карты ${cardNumber4} ${
-    validateLuhn(cardNumber4.replaceAll("-", ""))
+    validateLuhn(cardNumber4)
       ? "введен верно"
       : "введен неверно"
   }`
