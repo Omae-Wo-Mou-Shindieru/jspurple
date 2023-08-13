@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Document</title>
-    <script src="./app.js">
-    </script>
-</head>
-<body>
-    This is the way
-</body>
+    <link rel="stylesheet" href="/global.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="calc">
+        <div class="calc__inputs">
+          <input class="operand" type="number" min="0" step="1" />
+          <input class="operand" type="number" min="0" step="1" />
+        </div>
+        <div class="calc__buttons">
+          <button class="operator_btn">+</button>
+          <button class="operator_btn">-</button>
+          <button class="operator_btn">*</button>
+          <button class="operator_btn">/</button>
+        </div>
+        <div class="calc__result">
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <script src="17-calc/index.js"></script>
+  </body>
 </html>
