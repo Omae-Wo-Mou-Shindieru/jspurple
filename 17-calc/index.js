@@ -2,10 +2,8 @@
 
 const operand1 = document.querySelectorAll(".operand")[0];
 const operand2 = document.querySelectorAll(".operand")[1];
-// const operations = document.querySelector(".calc__buttons");
 const operations = document.querySelectorAll(".operator_btn");
 const resultSection = document.querySelector(".calc__result span");
-console.log(operations);
 
 function calculate(e) {
   const operator = e.target.innerText;
