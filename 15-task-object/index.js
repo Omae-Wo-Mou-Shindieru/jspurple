@@ -18,7 +18,6 @@ const toDoList = {
     }
     this.tasks.push({
       id,
-      priority: task.priority ?? 1,
       ...task,
     });
   },
